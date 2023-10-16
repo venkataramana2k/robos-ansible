@@ -1,0 +1,34 @@
+- name: Downloading Nodejs Repo
+  ansible.builtin.shell: curl -sL https://rpm.nodesource.com/setup_lts.x | bash
+
+- name: Installing nodejs Server
+  ansible.builtin.yum:
+    name: nodejs
+    state: latest
+
+app_start
+
+- name: Installing NodeJs Dependencies
+  ansible.builtin.shell: npm install
+  args:
+    chdir: /app
+
+- name: Copying Service File and starting the service
+  ansible.builtin.copy:
+    src: catalogue.service
+    dest: /etc/systemd/system/catalogue.service
+
+- name: copy Mongodb repo
+  ansible.builtin.copy:
+    src: mongodb.repo
+    dest: /etc/yum.repos.d/mongodb.repo
+
+- name: Install mongodb_schema
+  ansible.builtin.yum:
+    name: mongodb-org-shell -y
+    state: latest
+
+- name: Loading Schema
+  ansible.builtin.shell: mongo --host mongodb-dev.sadguru.shop </app/schema/catalogue.js
+
+service_start()

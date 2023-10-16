@@ -1,0 +1,7 @@
+- name: Install mongodb_schema
+  ansible.builtin.yum:
+    name: mongodb-org-shell -y
+    state: latest
+
+- name: Loading Schema
+  ansible.builtin.shell: mongo --host mongodb-dev.sadguru.shop </app/schema/catalogue.js
