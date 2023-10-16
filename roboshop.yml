@@ -1,0 +1,5 @@
+- name: Configuring nginx server
+  hosts: all
+  become: all
+  roles:
+    - "{{role_name}}"
