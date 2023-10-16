@@ -1,5 +1,5 @@
-- name: Configuring nginx server
+- name: Creating nginx Server
   hosts: all
-  become: all
-  roles:
-    - "{{role_name}}"
+  become: yes
+  tasks:
+    - "{{ role_name }}"
