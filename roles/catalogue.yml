@@ -1,0 +1,6 @@
+- name: Creating catalogue Server
+  hosts: all
+  become: yes
+  tasks:
+    - ansible.builtin.import_role:
+        name: catalogue
