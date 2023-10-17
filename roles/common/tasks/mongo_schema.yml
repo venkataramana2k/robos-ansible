@@ -1,6 +1,6 @@
 - name: Install mongodb_schema
   ansible.builtin.copy:
-    src: mongoodb.repo
+    src: mongodb.repo
     dest: /etc/yum.repos.d/momgodb.repo
 
 - name: Install mongodb_schema
