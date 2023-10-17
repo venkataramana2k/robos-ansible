@@ -1,9 +1,9 @@
-- name: Install mongodb_schema
+- name: downloading mongodb repo
   ansible.builtin.copy:
     src: mongodb.repo
     dest: /etc/yum.repos.d/momgodb.repo
 
-- name: Install mongodb_schema
+- name: Install mongodb
   ansible.builtin.yum:
     name: mongodb-org-shell
     state: latest
