@@ -1,4 +1,9 @@
 - name: Install mongodb_schema
+  ansible.builtin.copy:
+    src: mongoodb.repo
+    dest: /etc/yum.repos.d/momgodb.repo
+
+- name: Install mongodb_schema
   ansible.builtin.yum:
     name: mongodb-org-shell
     state: latest
