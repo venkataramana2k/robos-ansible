@@ -1,15 +1,20 @@
+- name: Downloading Nodejs Repo
+  ansible.builtin.shell: curl -sL https://rpm.nodesource.com/setup_lts.x | bash
 
- nodejs()
-    {
-      echo -e "$color Downloading NodeJs Repo$nocolor"
-      curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>${logfile}
-      status
-      echo -e "$color Installing Nodejs Server$nocolor"
-      yum install nodejs -y &>>${logfile}
-      status
-      app_start
-      echo -e "$color installing dependencies $nocolor"
-      npm install &>>${logfile}
-      status
-      service_start
-    }
+- name: Installing nodejs Server
+  ansible.builtin.yum:
+    name: nodejs
+    state: latest
+
+- name: Include task list in play
+  ansible.builtin.import_tasks:
+    file: app_start.yml
+
+- name: Installing npm
+  ansible.builtin.shell: npm install
+  args:
+    chdir: /app
+
+- name: Include task list in play
+  ansible.builtin.import_tasks:
+    file: service_start.yml
