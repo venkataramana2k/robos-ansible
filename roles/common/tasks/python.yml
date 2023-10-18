@@ -1,0 +1,20 @@
+- name: Installing python Server
+  ansible.builtin.yum:
+    name:
+      - python36
+      - gcc
+      - python3-devel
+    state: latest
+
+- name: Configuring app-prestartup
+  ansible.builtin.include_tasks:
+    file: app_prestartup.yml
+
+- name: Installing Dependencies
+  ansible.builtin.shell: pip3.6 install -r requirements.txt
+  args:
+    chdir: /app
+
+- name: Configuring service_start
+  ansible.builtin.include_tasks:
+    file: service_start.yml

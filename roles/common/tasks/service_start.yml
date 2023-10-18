@@ -5,6 +5,6 @@
 
 - name: Enabling and restarting {{ component }} Server
   ansible.builtin.systemd:
-    state: restarted
     name: "{{ component }}"
+    state: restarted
     enabled: true
