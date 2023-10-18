@@ -1,0 +1,33 @@
+- name: Installing maven Service
+  ansible.builtin.yum:
+    name: maven
+    state: latest
+
+- name: Include task list in play
+  ansible.builtin.import_tasks:
+    file: app_start.yml
+
+- name: Installing mvn clean package
+  ansible.builtin.shell: mvn clean package
+  args:
+    chdir: /app
+
+- name: building application to shipping
+  ansible.builtin.shell: mv target/shipping-1.0.jar shipping.jar
+  args:
+    chdir: /app
+
+- name: Include task list in play
+  ansible.builtin.import_tasks:
+    file: mysql_schema.yml
+
+- name: Configuring {{ component }} service
+  ansible.builtin.template:
+    src: "{{ component }}.service"
+    dest: /etc/systemd/system/{{ component }}.service
+
+- name: Enabling and starting the {{ component }} server
+  ansible.builtin.service:
+    name: "{{ component }}"
+    state: restarted
+    enabled: yes
