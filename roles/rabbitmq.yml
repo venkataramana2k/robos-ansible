@@ -1,0 +1,6 @@
+- name: Creating rabbitmq Service
+  hosts: all
+  become: yes
+  tasks:
+    - ansible.builtin.import_role:
+        name: rabbitmq
