@@ -6,9 +6,9 @@
       - python3-devel
     state: latest
 
-- name: Configuring app-prestartup
+- name: Configuring app-start
   ansible.builtin.include_tasks:
-    file: app_prestartup.yml
+    file: app_start.yml
 
 - name: Installing Dependencies
   ansible.builtin.shell: pip3.6 install -r requirements.txt
