@@ -13,7 +13,7 @@
 
 - name: Enabling and starting Mysql server
   ansible.builtin.systemd:
-    name: mysqld
+    name: mysql
     state: restarted
     enabled: true
 

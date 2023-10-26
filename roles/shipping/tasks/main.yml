@@ -1,9 +1,9 @@
 - name: Configuring maven server
-  ansible.builtin.import_role:
+  ansible.builtin.include_role:
     name: common
     tasks_from: maven.yml
 
-- name: Configuring mysql_schema
-  ansible.builtin.import_role:
+- name: Configuring mysql schema
+  ansible.builtin.include_role:
     name: common
     tasks_from: mysql_schema.yml
