@@ -4,3 +4,6 @@
   tasks:
     - ansible.builtin.import_role:
         name: cart
+
+- name: Setup Root Password
+  ansible.builtin.shell: sudo mysql_secure_installation --set-root-pass Roboshop@1
