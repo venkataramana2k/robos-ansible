@@ -3,8 +3,8 @@ Description=Shipping Service
 
 [Service]
 User=roboshop
-Environment=CART_ENDPOINT=cart-{{env}}.sadguru.shop:8080
-Environment=DB_HOST=mysql-{{env}}.sadguru.shop
+Environment=CART_ENDPOINT=cart-{{env}}.venkata.cloud:8080
+Environment=DB_HOST=mysql-{{env}}.venkata.cloud
 ExecStart=/bin/java -jar /app/shipping.jar
 SyslogIdentifier=shipping
 
