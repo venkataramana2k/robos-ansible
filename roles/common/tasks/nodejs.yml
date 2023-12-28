@@ -1,5 +1,5 @@
 - name: Downloading Nodejs Repo
-  ansible.builtin.shell: curl -sL https://rpm.nodesource.com/setup_lts.x | bash
+  ansible.builtin.shell: curl -sL https://rpm.nodesource.com/setup_19.x | sudo -E bash -
 
 - name: Installing nodejs Server
   ansible.builtin.yum:
