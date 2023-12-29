@@ -4,4 +4,4 @@
     state: latest
 
 - name: Loading mysql_Schema
-  ansible.builtin.shell: mysql -h mysql-dev.sadguru.shop -uroot -pRoboShop@1 </app/schema/{{ component }}.sql
+  ansible.builtin.shell: mysql -h mysql-dev.venkata.cloud -uroot -pRoboShop@1 </app/schema/{{ component }}.sql

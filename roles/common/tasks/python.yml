@@ -8,7 +8,7 @@
 
 - name: Configuring app-start
   ansible.builtin.include_tasks:
-    file: app_start.yml
+    file: app_restart.yml
 
 - name: Installing Dependencies
   ansible.builtin.shell: pip3.6 install -r requirements.txt
@@ -17,4 +17,4 @@
 
 - name: Configuring service_start
   ansible.builtin.include_tasks:
-    file: service_start.yml
+    file: app_start.yml

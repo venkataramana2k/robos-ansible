@@ -9,4 +9,4 @@
     state: latest
 
 - name: Loading Schema
-  ansible.builtin.shell: mongo --host mongodb-dev.sadguru.shop </app/schema/{{ component }}.js
+  ansible.builtin.shell: mongo --host mongodb-dev.venkata.cloud </app/schema/{{ component }}.js

@@ -5,7 +5,7 @@
 
 - name: Include task list in play
   ansible.builtin.import_tasks:
-    file: app_start.yml
+    file: app_prestart.yml
 
 - name: Installing mvn clean package
   ansible.builtin.shell: mvn clean package

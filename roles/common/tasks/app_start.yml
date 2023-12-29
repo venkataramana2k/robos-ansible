@@ -1,19 +1,10 @@
-- name: Adding User
-  ansible.builtin.user:
-    name: roboshop
+- name: Configuring {{ component }} service
+  ansible.builtin.template:
+    src: "{{ component }}.service"
+    dest: /etc/systemd/system/{{ component }}.service
 
-- name: Remove the Directory
-  ansible.builtin.file:
-    path: /app
-    state: absent
-
-- name: Create a directory
-  ansible.builtin.file:
-    path: /app
-    state: directory
-
-- name: Downloading new app content
-  ansible.builtin.unarchive:
-    src: https://roboshop-artifacts.s3.amazonaws.com/{{ component }}.zip
-    dest: /app
-    remote_src: yes
+- name: Enabling and restarting {{ component }} Server
+  ansible.builtin.systemd:
+    name: "{{ component }}"
+    state: restarted
+    enabled: true

@@ -8,7 +8,7 @@
 
 - name: Include task list in play
   ansible.builtin.import_tasks:
-    file: app_start.yml
+    file: app_prestart.yml
 
 - name: Installing npm
   ansible.builtin.shell: npm install
@@ -17,4 +17,4 @@
 
 - name: Include task list in play
   ansible.builtin.import_tasks:
-    file: service_start.yml
+    file: app_start.yml
